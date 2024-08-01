@@ -1,0 +1,66 @@
+[
+    {
+        "id": 1,
+        "name": "Nike Air Max 1 \"Anniversary Edition\"",
+        "description": "Celebrating the 30th anniversary of the Air Max 1, this limited edition features a classic red and white colorway with a retro look.",
+        "imageURL": "/product_images/Nike Air Max 1 Anniversary Edition.jpg",
+        "price": 150,
+        "category": "Shoes"
+    },
+    {
+        "id": 2,
+        "name": "Adidas UltraBoost 21 \"Pride Edition\"",
+        "description": "A colorful take on the UltraBoost 21, designed to celebrate diversity and inclusion with vibrant hues and a sleek design.",
+        "imageURL": "/product_images/Adidas UltraBoost 21 Pride Edition.jpg",
+        "price": 180,
+        "category": "Shoes"
+    },
+    {
+        "id": 3,
+        "name": "Converse Chuck Taylor All Star \"Year of the Dragon\"",
+        "description": "These limited edition Chuck Taylors feature intricate dragon embroidery to celebrate the Lunar New Year.",
+        "imageURL": "/product_images/Converse Chuck Taylor All Star Year of the Dragon.jpg",
+        "price": 120,
+        "category": "Shoes"
+    },
+    {
+        "id": 4,
+        "name": "New Balance 550 \"White/Green\"",
+        "description": "A retro-inspired sneaker that combines classic white leather with green accents, paying homage to the 1980s basketball style.",
+        "imageURL": "/product_images/New Balance 550 WhiteGreen.jpg",
+        "price": 130,
+        "category": "Shoes"
+    },
+    {
+        "id": 5,
+        "name": "Air Jordan 1 \"Travis Scott\"",
+        "description": "A highly sought-after collaboration with rapper Travis Scott, featuring a unique reverse Swoosh design and premium suede.",
+        "imageURL": "/product_images/Air Jordan 1 Travis Scott.jpg",
+        "price": 1000,
+        "category": "Sneakers"
+    },
+    {
+        "id": 6,
+        "name": "Yeezy Boost 350 V2 \"Zebra\"",
+        "description": "Known for its distinctive black and white stripe pattern, this Yeezy Boost 350 V2 is a limited edition with high resale value.",
+        "imageURL": "/product_images/Yeezy Boost 350 V2 Zebra.jpg",
+        "price": 220,
+        "category": "Sneakers"
+    },
+    {
+        "id": 7,
+        "name": "Nike SB Dunk Low \"Syracuse\"",
+        "description": "A nod to the Syracuse University colors, this Nike SB Dunk Low features an orange and white color scheme with premium materials.",
+        "imageURL": "/product_images/Nike SB Dunk Low Syracuse.jpg",
+        "price": 300,
+        "category": "Sneakers"
+    },
+    {
+        "id": 8,
+        "name": "Puma RS-X3 \"Puzzle Pack\"",
+        "description": "This sneaker features a bold and colorful design inspired by puzzle pieces, combining vibrant colors with a chunky silhouette.",
+        "imageURL": "/product_images/Puma RSX3 Puzzle Pack.jpg",
+        "price": 160,
+        "category": "Sneakers"
+    }
+]

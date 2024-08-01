@@ -11,3 +11,113 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.product-category {
+  margin: 20px;
+  background-color: #f9f9f9; /* Light background color for the category section */
+  padding: 10px;
+  border-radius: 8px; /* Rounded corners for the category section */
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between cards */
+}
+
+.product-card {
+  background: #ffffff; /* White background for the product card */
+  border: 1px solid #ddd; /* Light gray border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 20px;
+  width: calc(25% - 20px); /* 4 products per row */
+  box-sizing: border-box;
+  border-radius: 8px; /* Rounded corners for the product card */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 300px; /* Ensure a consistent height for all cards */
+}
+
+.product-image {
+  width: 100%;
+  height: 250px; /* Fixed height for images */
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.product-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribute space between description and buttons */
+}
+
+.product-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between buttons */
+  align-items: center;
+}
+
+.view-details-button, .add-to-cart-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px; /* Rounded corners for the button */
+  text-align: center;
+  cursor: pointer;
+}
+
+.view-details-button {
+  background-color: #DB7093; /* Blue color for the button */
+  color: white;
+}
+
+.add-to-cart-button {
+  background-color: #DB7093; /* Green color for the button */
+  color: white;
+}
+
+.view-details-button:hover {
+  background-color: #f47ba3; /* Darker blue for hover effect */
+}
+
+.add-to-cart-button:hover {
+  background-color: #f47ba3; /* Darker green for hover effect */
+}
+
+.product-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav {
+  background-color: #f9f9f9; /* Light background for the nav bar */
+  padding: 10px 20px;
+  border-bottom: 1px solid #ddd; /* Light border for separation */
+}
+
+nav a {
+  display: inline-block;
+  margin-right: 15px; /* Space between links */
+  padding: 10px 20px;
+  text-decoration: none; /* Remove underline */
+  border-radius: 5px; /* Rounded corners for the link */
+  color: #343a40; /* Blue color for the link */
+  background-color: #ffffff; /* White background for the link */
+  border: 1px solid #ddd; /* Light border for the link */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  text-align: center;
+}
+
+nav a:hover {
+  background-color: #DB7093; /* Blue background on hover */
+  color: white; /* White text color on hover */
+}
+
+nav a.active {
+  background-color: #DB7093; /* Darker blue for the active link */
+  color: white;
+}
