@@ -13,9 +13,11 @@ const App = () => {
     <Router>
     <div>
       <nav>
+      
         <center>
+        <div className="company-name">PG's Shoues</div>
         <NavLink exact to="/" activeClassName="active">Home</NavLink>
-        <NavLink to="/ProductCart" activeClassName="active">Checkout</NavLink>
+        <NavLink to="/ProductCart" activeClassName="active">Cart</NavLink>
         </center>
       </nav>
       <Routes>
