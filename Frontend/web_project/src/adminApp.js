@@ -6,9 +6,8 @@ import Cart from './components/ProductCart';
 import { CartProvider } from './contexts/CartContext';
 
 import './App.css';
-import adminApp from './adminApp';
 
-const App = () => {
+const adminApp = () => {
   return (
     <CartProvider>
     <Router>
@@ -23,13 +22,12 @@ const App = () => {
       </nav>
       <Routes>
         <Route path="/" element={<HomeProduct />} />
-        <Route path='/admin' element={adminApp} />
         <Route path="/product/:id" element={<ViewProduct />} />
         <Route path="/ProductCart" element={<Cart />} />
-      </Routes>
+    </Routes>
     </div>
   </Router>
   </CartProvider>
   );
 };
-export default App;
+export default adminApp;
