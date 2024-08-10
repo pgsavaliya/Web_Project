@@ -24,3 +24,9 @@ product model: name, description, size, price, image
 #install packages: npm i
 #run Project: npm start
 
+
+# URL to run Admin Panel
+http://localhost:3000/admin/login
+
+# URL to run User
+http://localhost:3000/
