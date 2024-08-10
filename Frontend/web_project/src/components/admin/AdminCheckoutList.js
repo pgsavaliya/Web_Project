@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import './AdminCheckoutList.css'; 
 
 const AdminCheckoutList = ({ token }) => {
   const [checkouts, setCheckouts] = useState([]);
@@ -9,7 +9,7 @@ const AdminCheckoutList = ({ token }) => {
     // Fetch checkouts from API
     const fetchCheckouts = async () => {
       try {
-        const response = await axios.get('http://localhost:2300/v1/admin/checkout/getAllCheckouts', {
+        const response = await axios.get('http://localhost:2300/v1/admin/checkout/getAllCheckout', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setCheckouts(response.data.data);
@@ -20,31 +20,18 @@ const AdminCheckoutList = ({ token }) => {
     fetchCheckouts();
   }, [token]);
 
-  const handleDelete = async (checkoutId) => {
-    try {
-      await axios.post(`http://localhost:2300/v1/admin/checkout/deleteCheckout?_id=${checkoutId}`, {}, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setCheckouts(checkouts.filter(checkout => checkout._id !== checkoutId));
-    } catch (error) {
-      console.error('Error deleting checkout:', error);
-    }
-  };
-
   return (
-    <div>
-      <h2>Admin - Checkout List</h2>
-      <ul>
+    <div className="checkout-container">
+      <h2 className="checkout-title">Admin - Checkout List</h2>
+      <ul className="checkout-list">
         {checkouts.map(checkout => (
-          <li key={checkout._id}>
-            <div>
+          <li key={checkout._id} className="checkout-item">
+            <div className="checkout-details">
               <p><b>Order ID:</b> {checkout._id}</p>
               <p><b>Name:</b> {checkout.firstName} {checkout.lastName}</p>
               <p><b>Email:</b> {checkout.email}</p>
               <p><b>Total Price:</b> ${checkout.finalPrice}</p>
-              {/* Add more details as needed */}
             </div>
-            <button onClick={() => handleDelete(checkout._id)}>Delete</button>
           </li>
         ))}
       </ul>

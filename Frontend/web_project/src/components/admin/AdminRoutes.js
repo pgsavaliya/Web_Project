@@ -5,6 +5,7 @@ import AdminProductList from './AdminProductList';
 import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
 import AdminCheckoutList from './AdminCheckoutList';
+import './AdminRoutes.css';
 
 const AdminRoutes = () => {
   const [token, setToken] = useState(localStorage.getItem('adminToken') || null);
@@ -23,23 +24,24 @@ const AdminRoutes = () => {
   }
 
   return (
-    <div>
-      <nav>
-        <NavLink to="/admin" end>Admin Home</NavLink>
-        <NavLink to="/admin/add">Add Product</NavLink>
-        <NavLink to="/admin/checkouts">Checkouts</NavLink>
-        <button onClick={() => setToken(null)}>Logout</button>
+    <div className="admin-container">
+      <nav className="admin-nav">
+        <NavLink to="/admin" className="nav-link" end>Admin Home</NavLink>
+        <NavLink to="/admin/add" className="nav-link">Add Product</NavLink>
+        <NavLink to="/admin/checkouts" className="nav-link">Checkouts</NavLink>
+        <button className="logout-button" onClick={() => setToken(null)}>Logout</button>
       </nav>
       
-      <Routes>
-        <Route path="/" element={<AdminProductList  token={token}/>} />
-        <Route path="/add" element={<AddProduct token={token}/>} />
-        <Route path="/edit/:id" element={<EditProduct token={token}/>} />
-        <Route path="/checkouts" element={<AdminCheckoutList token={token} />} />
-      </Routes>
+      <div className="admin-content">
+        <Routes>
+          <Route path="/" element={<AdminProductList token={token} />} />
+          <Route path="/add" element={<AddProduct token={token} />} />
+          <Route path="/edit/:id" element={<EditProduct token={token} />} />
+          <Route path="/checkouts" element={<AdminCheckoutList token={token} />} />
+        </Routes>
+      </div>
     </div>
   );
 };
 
 export default AdminRoutes;
-
