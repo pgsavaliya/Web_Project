@@ -40,7 +40,15 @@ const Cart = () => {
             {cart.map(renderCartItem)}
           </ul>
           <div className="total-price">Total: ${totalPrice.toFixed(2)}</div>
-          <button className="back-button" onClick={() => navigate('/')}>Back to Home</button>
+          <div className="cart-buttons">
+            <button className="back-button" onClick={() => navigate('/')}>Back to Home</button>
+            <button 
+              className="checkout-button" 
+              onClick={() => navigate('/checkout')} 
+              disabled={cart.length === 0}>
+              Checkout
+            </button>
+          </div>
         </>
       )}
     </div>

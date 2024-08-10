@@ -122,4 +122,35 @@ h2 {
 .back-button:hover {
   background-color: #006666;
 }
+.cart-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
 
+.back-button,
+.checkout-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button {
+  background-color: #ccc;
+}
+
+.checkout-button {
+  background-color: #5cb85c;
+  color: white;
+}
+
+.checkout-button:disabled {
+  background-color: #999;
+  cursor: not-allowed;
+}
+
+.back-button:hover,
+.checkout-button:hover:not(:disabled) {
+  opacity: 0.9;
+}
