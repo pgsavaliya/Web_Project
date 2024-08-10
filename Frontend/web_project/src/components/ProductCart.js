@@ -7,22 +7,24 @@ const Cart = () => {
   const { cart, removeFromCart, updateQuantity } = useCart();
   const navigate = useNavigate();
 
-  const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  // Calculate the total price of items in the cart
+  const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price.replace('$', '')) * item.quantity, 0);
 
+  // Render each cart item
   const renderCartItem = (item) => (
-    <li key={item.id} className="cart-item">
-      <img src={item.imageURL} alt={item.name} className="cart-item-image" />
+    <li key={item._id} className="cart-item">
+      <img src={item.image} alt={item.name} className="cart-item-image" />
       <div className="cart-item-details">
         <h3>{item.name}</h3>
-        <p>Price: ${item.price.toFixed(2)}</p>
+        <p>Price: ${parseFloat(item.price.replace('$', '')).toFixed(2)}</p>
         <div className="quantity">
           <p>Quantity: {item.quantity}</p>
           <div className="quantity-control">
-            <button onClick={() => updateQuantity(item.id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
-            <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+            <button onClick={() => updateQuantity(item._id, item.quantity - 1)} disabled={item.quantity <= 1}>-</button>
+            <button onClick={() => updateQuantity(item._id, item.quantity + 1)}>+</button>
           </div>
         </div>
-        <button className="remove-button" onClick={() => removeFromCart(item.id)}>Remove</button>
+        <button className="remove-button" onClick={() => removeFromCart(item._id)}>Remove</button>
       </div>
     </li>
   );

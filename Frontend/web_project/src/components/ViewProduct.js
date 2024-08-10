@@ -1,17 +1,35 @@
-import React, { useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import products from '../products.json';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { useCart } from '../contexts/CartContext';
 import './ViewProduct.css';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const product = products.find(p => p.id === parseInt(id));
-  const { addToCart} = useCart(); 
+  const { addToCart } = useCart(); 
+  const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-  if (!product) return <div>Product not found</div>;
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await axios.get(`http://localhost:2300/v1/user/product/getByIdProduct?_id=${id}`);
+        setProduct(response.data.data);
+        setLoading(false);
+      } catch (error) {
+        setError('Product not found');
+        setLoading(false);
+      }
+    };
+
+    fetchProduct();
+  }, [id]);
+
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
 
   const increaseQuantity = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
@@ -28,27 +46,31 @@ const ProductDetail = () => {
 
   return (
     <div className="product-detail">
-      <img src={product.imageURL} alt={product.name} />
-      <div className="product-detail-content">
-        <h2>{product.name}</h2>
-        <p>{product.description}</p>
-        <b><p>Price: ${product.price * quantity}</p></b>
+      {product && (
+        <>
+          <img src={product.image} alt={product.name} className="product-detail-image" />
+          <div className="product-detail-content">
+            <h2>{product.name}</h2>
+            <p>{product.description}</p>
+            <p><b>Price: ${(parseFloat(product.price.replace('$', '')) * quantity).toFixed(2)}</b></p>
 
-        {/* Quantity Control */}
-        <div className="quantity-control">
-          <button onClick={decreaseQuantity}>-</button>
-          <span>{quantity}</span>
-          <button onClick={increaseQuantity}>+</button>
-        </div>
+            {/* Quantity Control */}
+            <div className="quantity-control">
+              <button onClick={decreaseQuantity}>-</button>
+              <span>{quantity}</span>
+              <button onClick={increaseQuantity}>+</button>
+            </div>
 
-        {/* Buttons */}
-        <div className="product-buttons">
-          <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
-        </div>
-      </div>
+            {/* Buttons */}
+            <div className="product-buttons">
+              <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
+              <button className="back-button" onClick={() => navigate(-1)}>Back</button>
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 };
-
 
 export default ProductDetail;

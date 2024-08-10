@@ -1,11 +1,8 @@
-
-
-
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import products from '../products.json';
 import { useCart } from '../contexts/CartContext';
 import './HomeProduct.css';
+import axios from 'axios';
 
 const ProductList = () => {
   const [productList, setProductList] = useState([]);
@@ -13,8 +10,18 @@ const ProductList = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setProductList(products);
-  }, []);
+    const fetchProducts = async () => {
+      try {
+        const response = await axios.get('http://localhost:2300/v1/user/product/getAllProduct');
+        const products = response.data.data;
+        setProductList(products);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []); 
 
   const handleAddToCart = (product) => {
     addToCart(product, 1);
@@ -23,7 +30,7 @@ const ProductList = () => {
 
   const categorizedProducts = {
     Shoes: productList.filter(product => product.category === 'Shoes'),
-    Sneakers: productList.filter(product => product.category === 'Sneakers')
+    Sneakers: productList.filter(product => product.category === 'Sneakers'),
   };
 
   return (
@@ -33,14 +40,14 @@ const ProductList = () => {
           <h1>{category}</h1>
           <div className="product-grid">
             {categorizedProducts[category].map(product => (
-              <div key={product.id} className="product-card">
-                <img src={product.imageURL} alt={product.name} className="product-image" />
+              <div key={product._id} className="product-card">
+                <img src={product.image} alt={product.name} className="product-image" />
                 <div className="product-content">
                   <h2>{product.name}</h2>
                   <p>{product.description}</p>
-                  <p><b>Price: ${product.price}</b></p>
+                  <p><b>Price: {product.price}</b></p>
                   <div className="product-buttons">
-                    <button className="view-details-button" onClick={() => navigate(`/product/${product.id}`)}>View Details</button>
+                    <button className="view-details-button" onClick={() => navigate(`/product/${product._id}`)}>View Details</button>
                     <button className="add-to-cart-button" onClick={() => handleAddToCart(product)}>Add to Cart</button>
                   </div>
                 </div>
