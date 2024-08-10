@@ -45,7 +45,7 @@ const ProductList = () => {
                 <div className="product-content">
                   <h2>{product.name}</h2>
                   <p>{product.description}</p>
-                  <p><b>Price: {product.price}</b></p>
+                  <p><b>Price: ${product.price}</b></p>
                   <div className="product-buttons">
                     <button className="view-details-button" onClick={() => navigate(`/product/${product._id}`)}>View Details</button>
                     <button className="add-to-cart-button" onClick={() => handleAddToCart(product)}>Add to Cart</button>

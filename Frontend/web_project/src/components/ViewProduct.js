@@ -52,7 +52,7 @@ const ProductDetail = () => {
           <div className="product-detail-content">
             <h2>{product.name}</h2>
             <p>{product.description}</p>
-            <p><b>Price: ${(parseFloat(product.price.replace('$', '')) * quantity).toFixed(2)}</b></p>
+            <p><b>Price: ${(product.price * quantity).toFixed(2)}</b></p>
 
             {/* Quantity Control */}
             <div className="quantity-control">

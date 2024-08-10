@@ -11,7 +11,7 @@ const checkoutSchema = new Schema(
         trim:true,
     },
     mobile:{
-        type:String,
+        type:Number,
         trim:true
     },
     email:{

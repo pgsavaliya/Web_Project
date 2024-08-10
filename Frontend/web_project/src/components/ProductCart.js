@@ -8,7 +8,7 @@ const Cart = () => {
   const navigate = useNavigate();
 
   // Calculate the total price of items in the cart
-  const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price.replace('$', '')) * item.quantity, 0);
+  const totalPrice = cart.reduce((total, item) => total + parseFloat(item.price) * item.quantity, 0);
 
   // Render each cart item
   const renderCartItem = (item) => (
@@ -16,7 +16,7 @@ const Cart = () => {
       <img src={item.image} alt={item.name} className="cart-item-image" />
       <div className="cart-item-details">
         <h3>{item.name}</h3>
-        <p>Price: ${parseFloat(item.price.replace('$', '')).toFixed(2)}</p>
+        <p>Price: ${item.price.toFixed(2)}</p>
         <div className="quantity">
           <p>Quantity: {item.quantity}</p>
           <div className="quantity-control">
